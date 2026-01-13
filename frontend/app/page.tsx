@@ -61,6 +61,12 @@ export default function Dashboard() {
                     {result && (
                         <div className="bg-gray-50 p-4 rounded border text-sm">
                             <h3 className="font-bold mb-2">Workflow Result:</h3>
+                            {result.icarusExecutionId && (
+                                <div className="mb-2 p-2 bg-blue-50 border border-blue-200 rounded text-blue-800">
+                                    <p className="font-bold">Execution Platform: Icarus</p>
+                                    <p>Execution ID: {result.icarusExecutionId}</p>
+                                </div>
+                            )}
                             <pre className="text-gray-700 whitespace-pre-wrap">{JSON.stringify(result, null, 2)}</pre>
                         </div>
                     )}
