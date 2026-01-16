@@ -60,6 +60,8 @@ async function handleAttendanceCheck(threshold, res) {
                 }
             } catch (e) {
                 console.error("WA Send Error", e);
+                waResult = { success: false, status: "failed", message: e.message || "Twilio Error" };
+
                 // Explicitly show error handling
                 await supabase.from('logs').insert({
                     student_hash: student.id,
@@ -92,6 +94,8 @@ async function handleAttendanceCheck(threshold, res) {
                 student: student.name,
                 attendance: student.attendance,
                 notified: waResult.success,
+                notificationStatus: waResult.status || 'success',
+                notificationMessage: waResult.message || 'Sent',
                 meetingScheduled: scheduleResult ? scheduleResult.meetingLink : 'N/A',
                 onChainTx: chainLog.txHash
             });

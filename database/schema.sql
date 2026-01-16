@@ -23,7 +23,7 @@ create table public.logs (
 insert into public.students (name, phone, attendance, warnings)
 values
   ('Alice Johnson', '+15550101', 85.5, 0),
-  ('Bob Smith', '+15550102', 65.0, 1), -- Below 75%
+  ('Bob Smith', '+919948745333', 65.0, 1), -- Below 75%
   ('Charlie Davis', '+15550103', 92.0, 0),
-  ('Diana Prince', '+15550104', 70.5, 2), -- Below 75%
-  ('Evan Wright', '+15550105', 45.0, 3); -- Repeated defaulter
+  ('Diana Prince', '+918688677175', 70.5, 2), -- Below 75%
+  ('Evan Wright', '+918074503383', 45.0, 3); -- Repeated defaulter
