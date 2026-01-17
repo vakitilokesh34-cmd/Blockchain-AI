@@ -38,3 +38,19 @@ create table public.assignments (
   created_at timestamp with time zone default timezone('utc'::text, now())
 );
 
+-- Seed Data: Assignments (Randomly distributed)
+INSERT INTO public.assignments (student_id, title, status, due_date)
+SELECT 
+    s.id, 
+    titles.title,
+    -- Randomly assigns a status so the data isn't identical
+    (ARRAY['completed', 'pending', 'overdue'])[floor(random() * 3 + 1)],
+    TO_DATE('15-01-2026', 'DD-MM-YYYY')
+FROM public.students s  
+CROSS JOIN (
+    SELECT unnest(ARRAY[
+        'Data Structures Project', 
+        'System Architecture Design', 
+        'SQL Optimization Lab'
+    ]) AS title
+) AS titles;

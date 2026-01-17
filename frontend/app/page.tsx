@@ -129,6 +129,7 @@ export default function Dashboard() {
                         onClick={() => setActiveView('dashboard')}
                         className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 text-left ${activeView === 'dashboard' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:bg-gray-800'
                             }`}
+                        suppressHydrationWarning
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -139,24 +140,18 @@ export default function Dashboard() {
                         onClick={() => setActiveView('analytics')}
                         className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 text-left ${activeView === 'analytics' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:bg-gray-800'
                             }`}
+                        suppressHydrationWarning
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                         </svg>
                         Analytics
                     </button>
-
-                    <button className="w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 text-left text-gray-400 hover:bg-gray-800">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        Scheduling
-                    </button>
-
                     <button
                         onClick={() => setActiveView('audit')}
                         className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 text-left ${activeView === 'audit' ? 'bg-purple-500/20 text-purple-400' : 'text-gray-400 hover:bg-gray-800'
                             }`}
+                        suppressHydrationWarning
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -168,6 +163,7 @@ export default function Dashboard() {
                         onClick={() => setActiveView('assignments')}
                         className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 text-left ${activeView === 'assignments' ? 'bg-orange-500/20 text-orange-400' : 'text-gray-400 hover:bg-gray-800'
                             }`}
+                        suppressHydrationWarning
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -328,6 +324,7 @@ export default function Dashboard() {
                                             value={searchWorkflow}
                                             onChange={(e) => setSearchWorkflow(e.target.value)}
                                             className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg pl-10 pr-4 py-2 text-white text-sm focus:border-blue-500 focus:outline-none"
+                                            suppressHydrationWarning
                                         />
                                     </div>
                                 </div>
@@ -444,6 +441,7 @@ export default function Dashboard() {
                                     onClick={handleRun}
                                     disabled={loading || !command.trim()}
                                     className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors btn-primary font-semibold"
+                                    suppressHydrationWarning
                                 >
                                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
@@ -759,6 +757,7 @@ export default function Dashboard() {
                                         onChange={(e) => setCommand(e.target.value)}
                                         placeholder="Enter AI command..."
                                         className="flex-1 bg-[#0d0d0d] border border-[#2a2a2a] rounded-lg px-4 py-2 text-white text-sm focus:border-blue-500 focus:outline-none"
+                                        suppressHydrationWarning
                                     />
                                     <button
                                         onClick={handleRun}

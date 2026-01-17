@@ -479,7 +479,7 @@ const getMetrics = async (req, res) => {
 };
 
 /**
- * Get assignments (with mock fallback)
+ * Get assignments from DB (Schema inserted via SQL)
  */
 const getAssignments = async (req, res) => {
     try {
