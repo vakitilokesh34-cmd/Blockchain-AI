@@ -70,14 +70,14 @@ const workflows = {
         name: "Critical Attendance Intervention",
         id: "attendance_critical_60",
         trigger: "natural_language",
-        description: "Handle students below 60% attendance with escalated intervention",
+        description: "Handle students below 65% attendance with escalated intervention",
         steps: [
             {
                 id: "FETCH_CRITICAL_STUDENTS",
                 service: "Supabase",
                 description: "Fetch students with critical attendance",
                 action: "database_query",
-                query: "SELECT * FROM students WHERE attendance < 60"
+                query: "SELECT * FROM students WHERE attendance < 65"
             },
             {
                 id: "HASH_STUDENT_IDS",

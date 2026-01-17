@@ -27,3 +27,14 @@ values
   ('Charlie Davis', '+15550103', 92.0, 0),
   ('Diana Prince', '+918688677175', 70.5, 2), -- Below 75%
   ('Evan Wright', '+918074503383', 45.0, 3); -- Repeated defaulter
+
+-- Table: assignments
+create table public.assignments (
+  id uuid default uuid_generate_v4() primary key,
+  student_id uuid references public.students(id),
+  title text not null,
+  status text not null check (status in ('completed', 'pending', 'overdue')),
+  due_date date not null,
+  created_at timestamp with time zone default timezone('utc'::text, now())
+);
+

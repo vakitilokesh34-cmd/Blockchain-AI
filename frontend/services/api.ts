@@ -92,4 +92,15 @@ export const getIcarusMetrics = async () => {
     }
 };
 
+// Get assignments
+export const getAssignments = async () => {
+    try {
+        const res = await api.get('/assignments');
+        return res.data;
+    } catch (error) {
+        console.error("Error fetching assignments", error);
+        return [];
+    }
+};
+
 export default api;

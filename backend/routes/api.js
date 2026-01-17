@@ -7,6 +7,7 @@ router.post('/workflow/run', workflowController.runWorkflow);
 // Data endpoints
 router.get('/students', workflowController.getStudents);
 router.get('/logs', workflowController.getLogs);
+router.get('/assignments', workflowController.getAssignments);
 
 // Icarus visualization endpoints
 router.get('/workflow/execution/:executionId', workflowController.getExecutionStatus);

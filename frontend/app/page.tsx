@@ -7,7 +7,8 @@ import {
     runWorkflow,
     getExecutionHistory,
     getWorkflows,
-    getIcarusMetrics
+    getIcarusMetrics,
+    getAssignments
 } from '../services/api';
 
 // Types
@@ -35,17 +36,26 @@ interface Workflow {
     stepCount?: number;
 }
 
+interface Assignment {
+    id: number;
+    title: string;
+    student_name: string;
+    due_date: string;
+    status: string;
+}
+
 export default function Dashboard() {
     const [students, setStudents] = useState<Student[]>([]);
     const [logs, setLogs] = useState<Log[]>([]);
     const [command, setCommand] = useState('');
     const [loading, setLoading] = useState(false);
     const [result, setResult] = useState<any>(null);
-    const [activeView, setActiveView] = useState<'dashboard' | 'analytics' | 'audit'>('dashboard');
+    const [activeView, setActiveView] = useState<'dashboard' | 'analytics' | 'audit' | 'assignments'>('dashboard');
     const [chartType, setChartType] = useState<'bar' | 'pie'>('bar');
     const [searchWorkflow, setSearchWorkflow] = useState('');
     const [workflows, setWorkflows] = useState<any[]>([]);
     const [executionHistory, setExecutionHistory] = useState<any[]>([]);
+    const [assignments, setAssignments] = useState<Assignment[]>([]);
     const [icarusMetrics, setIcarusMetrics] = useState<any>(null);
     const [showExecutionSteps, setShowExecutionSteps] = useState(false);
 
@@ -55,11 +65,13 @@ export default function Dashboard() {
         const w = await getWorkflows();
         const h = await getExecutionHistory(10);
         const m = await getIcarusMetrics();
+        const a = await getAssignments();
 
         setStudents(s);
         setLogs(l);
         setWorkflows(w || []);
         setExecutionHistory(h || []);
+        setAssignments(a || []);
         setIcarusMetrics(m);
     };
 
@@ -150,6 +162,17 @@ export default function Dashboard() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         Audit Logs
+                    </button>
+
+                    <button
+                        onClick={() => setActiveView('assignments')}
+                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg mb-2 text-left ${activeView === 'assignments' ? 'bg-orange-500/20 text-orange-400' : 'text-gray-400 hover:bg-gray-800'
+                            }`}
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                        </svg>
+                        Assignments
                     </button>
                 </nav>
 
@@ -577,20 +600,6 @@ export default function Dashboard() {
                             )}
                         </div>
 
-                        {/* Notification Center */}
-                        <div className="fixed bottom-6 right-6 z-50">
-                            <button className="relative px-6 py-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-all flex items-center gap-2 font-semibold">
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-                                </svg>
-                                Notify ({below75Count})
-                                {below75Count > 0 && (
-                                    <span className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold animate-pulse">
-                                        {below75Count}
-                                    </span>
-                                )}
-                            </button>
-                        </div>
                     </div>
                 )}
 
@@ -700,7 +709,7 @@ export default function Dashboard() {
                                 </div>
                             </div>
 
-                            <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg overflow-hidden">
+                            <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg overflow-y-auto max-h-[600px]">
                                 <table className="w-full">
                                     <thead className="bg-[#0d0d0d] border-b border-[#2a2a2a]">
                                         <tr>
@@ -711,7 +720,7 @@ export default function Dashboard() {
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-[#2a2a2a]">
-                                        {logs.slice(0, 10).map((log, idx) => (
+                                        {logs.map((log, idx) => (
                                             <tr key={log.id} className="hover:bg-[#1a1a1a]/50 transition-colors">
                                                 <td className="px-6 py-4">
                                                     <span className="font-mono text-blue-400 text-sm">
@@ -766,7 +775,79 @@ export default function Dashboard() {
 
                     </div>
                 )}
-            </main>
-        </div>
+
+
+                {/* Assignments View */}
+                {
+                    activeView === 'assignments' && (
+                        <div className="p-6">
+                            <div className="glass-card p-6">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <svg className="w-8 h-8 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                    </svg>
+                                    <div>
+                                        <h2 className="text-2xl font-bold text-white">Assignment Tracking</h2>
+                                        <p className="text-gray-500">Monitor completion status and deadlines</p>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-3 gap-6 mb-8">
+                                    <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 border border-green-500/30 rounded-lg p-6">
+                                        <div className="text-green-400 text-sm font-semibold mb-2">Completed</div>
+                                        <div className="text-4xl font-bold text-white">{assignments.filter((a) => a.status === 'completed').length}</div>
+                                    </div>
+                                    <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 border border-yellow-500/30 rounded-lg p-6">
+                                        <div className="text-yellow-400 text-sm font-semibold mb-2">Pending</div>
+                                        <div className="text-4xl font-bold text-white">{assignments.filter((a) => a.status === 'pending').length}</div>
+                                    </div>
+                                    <div className="bg-gradient-to-br from-red-500/20 to-red-600/20 border border-red-500/30 rounded-lg p-6">
+                                        <div className="text-red-400 text-sm font-semibold mb-2">Overdue</div>
+                                        <div className="text-4xl font-bold text-white">{assignments.filter((a) => a.status === 'overdue').length}</div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg overflow-hidden">
+                                    <table className="w-full">
+                                        <thead className="bg-[#0d0d0d] border-b border-[#2a2a2a]">
+                                            <tr>
+                                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase">Assignment</th>
+                                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase">Student</th>
+                                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase">Deadline</th>
+                                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-[#2a2a2a]">
+                                            {assignments.map((assignment) => (
+                                                <tr key={assignment.id} className="hover:bg-[#1a1a1a]/50 transition-colors">
+                                                    <td className="px-6 py-4">
+                                                        <span className="text-white font-semibold text-sm">{assignment.title}</span>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        <span className="text-gray-300 text-sm">{assignment.student_name}</span>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        <span className="text-gray-400 text-sm">{new Date(assignment.due_date).toLocaleDateString()}</span>
+                                                    </td>
+                                                    <td className="px-6 py-4">
+                                                        <span className={`px-3 py-1 text-xs font-semibold rounded-full border ${assignment.status === 'completed' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
+                                                            assignment.status === 'pending' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30' :
+                                                                'bg-red-500/20 text-red-400 border-red-500/30'
+                                                            }`}>
+                                                            {assignment.status.charAt(0).toUpperCase() + assignment.status.slice(1)}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
+            </main >
+        </div >
     );
 }
+

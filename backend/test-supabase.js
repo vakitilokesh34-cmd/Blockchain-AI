@@ -16,7 +16,7 @@ async function test() {
         if (error) {
             console.error('Supabase Error:', error);
         } else {
-            console.log('Success! Data:', data);
+            console.log('Success! Keys:', Object.keys(data[0]));
         }
     } catch (err) {
         console.error('Exception:', err);
