@@ -1,0 +1,9 @@
+{
+  "network": {
+    "name": "weil-chain-testnet",
+    "rpcUrl": "https://rpc.testnet.weilchain.io",
+    "chainId": 6174,
+    "explorer": "https://explorer.testnet.weilchain.io",
+    "currencySymbol": "WEIL"
+  }
+}

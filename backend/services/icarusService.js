@@ -3,8 +3,8 @@
  * Provides real-time workflow execution tracking and visualization
  */
 
-const weillipticSDK = require('../../weilliptic/sdk');
-const { getWorkflow } = require('../../weilliptic/attendanceWorkflow');
+const weillipticSDK = require('../../weilliptic/sdk.cjs');
+const { getWorkflow } = require('../../weilliptic/attendanceWorkflow.cjs');
 
 class IcarusService {
   constructor() {

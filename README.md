@@ -1,24 +1,18 @@
-# Smart Autonomous University Agent
+# Blockchain-First Smart University
 
-## Overview
-This project acts as a smart autonomous agent for university management, handling attendance monitoring, student notifications, and blockchain logging.
+## 🧠 Core Philosophy
+- **Blockchain (Weil Chain) = Core Authority (≈99%)**: Governs decisions, stores policies, and enforces rules.
+- **Weilliptic SDK**: Defines deterministic, step-based workflows (MCP style).
+- **Icarus**: Executes and visualizes the workflows.
+- **Agent AI (≈1%)**: Only acts as a trigger to convert human intent into a workflow start.
 
-## Weilliptic & Icarus Integration
+## 🧩 Technology Roles
+- **Weilliptic SDK**: Workflow definition.
+- **Icarus**: Execution, branching, and visualization.
+- **Weil Chain**: Policies, enforcement, and immutable history.
+- **Agent AI**: Thin trigger layer (1% power).
 
-This project defines academic workflows as Model Context Protocol (MCP)
-steps using Weilliptic’s agentic workflow model.
-
-The LowAttendanceWorkflow is deployed on Icarus, where:
-- Each step is visualized
-- Execution order is tracked
-- Failures and retries are observable
-- On-chain audit logs are linked per execution
-
-![Weilliptic MCP Workflow](docs/icarus-workflow.png)
-
-Workflow steps:
-1. Fetch attendance from Supabase
-2. Filter students based on policy thresholds
-3. Send WhatsApp notifications via Twilio
-4. Schedule escalation meetings via Calendar
-5. Emit on-chain audit events
+## 🚀 Execution
+Run the system using the unified dashboard. Enter commands like:
+- "Check attendance and enforce policy"
+- "Identify at-risk students and run governance"

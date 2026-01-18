@@ -180,8 +180,8 @@ export default function Dashboard() {
                             Monitoring Active
                         </div>
                         <div className="flex items-center gap-2 text-xs text-gray-400 mt-1">
-                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                            All Services Operational
+                            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                            Weil Chain Connected
                         </div>
                     </div>
                 </div>
@@ -194,9 +194,9 @@ export default function Dashboard() {
                     <div className="flex items-start justify-between">
                         <div>
                             <h1 className="text-3xl font-bold text-white mb-2">
-                                Smart Autonomous <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">University Agent</span>
+                                <span className="text-blue-400">Smart Autonomous</span> University Agent
                             </h1>
-                            <p className="text-gray-500">AI-Driven Multi-Step Academic Monitoring System</p>
+                            <p className="text-gray-500">Intelligent Monitoring • Automated Workflows • Real-time Analytics</p>
                         </div>
                         <div className="flex gap-2">
                             <span className="px-3 py-1.5 bg-green-500/20 text-green-400 text-xs font-semibold rounded-lg border border-green-500/30 flex items-center gap-2">
@@ -207,7 +207,7 @@ export default function Dashboard() {
                                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                                 </svg>
-                                AI Powered
+                                AI Trigger (1%)
                             </span>
                             <span className="px-3 py-1.5 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-lg border border-purple-500/30 flex items-center gap-2">
                                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -220,6 +220,12 @@ export default function Dashboard() {
                                     <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                                 </svg>
                                 Audited
+                            </span>
+                            <span className="px-3 py-1.5 bg-blue-600/20 text-blue-300 text-xs font-semibold rounded-lg border border-blue-500/30 flex items-center gap-2">
+                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                </svg>
+                                Weil Chain (31337)
                             </span>
                         </div>
                     </div>
@@ -236,8 +242,8 @@ export default function Dashboard() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                                     </svg>
                                     <div>
-                                        <h2 className="text-xl font-bold text-white">AI-Driven Academic Monitoring</h2>
-                                        <p className="text-gray-500 text-sm">Three-condition threshold detection and alerts - All notify</p>
+                                        <h2 className="text-xl font-bold text-white">Smart Attendance Monitoring</h2>
+                                        <p className="text-gray-500 text-sm">Automated student tracking and intervention system</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-4">
@@ -374,6 +380,7 @@ export default function Dashboard() {
                                             onClick={() => setChartType('bar')}
                                             className={`px-3 py-1 text-xs font-semibold rounded ${chartType === 'bar' ? 'bg-blue-500 text-white' : 'bg-[#1a1a1a] text-gray-400'
                                                 }`}
+                                            suppressHydrationWarning
                                         >
                                             Bar Chart
                                         </button>
@@ -426,7 +433,7 @@ export default function Dashboard() {
                                 <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                                 </svg>
-                                <h3 className="text-white font-semibold">Command Line - AI-Driven Monitoring</h3>
+                                <h3 className="text-white font-semibold">Workflow Trigger - AI Intent Analysis</h3>
                             </div>
                             <div className="flex gap-2">
                                 <input
@@ -436,6 +443,7 @@ export default function Dashboard() {
                                     onKeyPress={(e) => e.key === 'Enter' && handleRun()}
                                     placeholder="Enter AI command..."
                                     className="flex-1 bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:outline-none"
+                                    suppressHydrationWarning
                                 />
                                 <button
                                     onClick={handleRun}
@@ -488,6 +496,18 @@ export default function Dashboard() {
                                                 <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-lg p-4">
                                                     <div className="text-gray-500 text-xs mb-1">Notifications Sent</div>
                                                     <div className="text-2xl font-bold text-green-400">{result.result.successCount}</div>
+                                                </div>
+                                            )}
+                                            {result.result.policyApplied && (
+                                                <div className="bg-[#1a1a1a] border border-blue-500/30 rounded-lg p-4">
+                                                    <div className="text-blue-400 text-xs mb-1">Policy Applied</div>
+                                                    <div className="text-xl font-bold text-white">{result.result.policyApplied}</div>
+                                                </div>
+                                            )}
+                                            {result.result.auditProof && (
+                                                <div className="bg-[#1a1a1a] border border-purple-500/30 rounded-lg p-4">
+                                                    <div className="text-purple-400 text-xs mb-1">Audit Proof (Weil Chain)</div>
+                                                    <div className="text-sm font-mono text-purple-200 truncate">{result.result.auditProof}</div>
                                                 </div>
                                             )}
                                             {result.result.proof && (
@@ -683,8 +703,8 @@ export default function Dashboard() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
                                 <div>
-                                    <h2 className="text-2xl font-bold text-white">Blockchain-Backed Audit Logs</h2>
-                                    <p className="text-gray-500">Immutable transparency & encryption logs for compliance</p>
+                                    <h2 className="text-2xl font-bold text-white">Execution Audit Trail</h2>
+                                    <p className="text-gray-500">Historical record of all automated actions and notifications</p>
                                 </div>
                             </div>
 
@@ -748,7 +768,7 @@ export default function Dashboard() {
                                     <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                                         <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                                     </svg>
-                                    <span className="text-white font-semibold text-sm">Command Line - AI-Driven Monitoring</span>
+                                    <span className="text-white font-semibold text-sm">Blockchain Governance - Policy Trigger</span>
                                 </div>
                                 <div className="flex gap-2">
                                     <input

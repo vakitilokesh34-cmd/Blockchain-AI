@@ -1,0 +1,42 @@
+Triggering Workflow: """ ...
+Status Code: 200
+Response Body: {
+  "message": "Command not recognized. Try: \"Check attendance and notify students under 75%\"",
+  "status": "unknown",
+  "availableWorkflows": [
+    {
+      "id": "attendance_low_75",
+      "name": "Low Attendance Detection & Notification",
+      "description": "Detect students below 75% attendance and send notifications",
+      "stepCount": 7
+    },
+    {
+      "id": "attendance_critical_60",
+      "name": "Critical Attendance Intervention",
+      "description": "Handle students below 65% attendance with escalated intervention",
+      "stepCount": 7
+    },
+    {
+      "id": "assignment_tracking",
+      "name": "Assignment Completion Tracking",
+      "description": "Track and notify students with incomplete assignments",
+      "stepCount": 6
+    },
+    {
+      "id": "performance_review",
+      "name": "Student Performance Review",
+      "description": "Comprehensive student performance analysis and reporting",
+      "stepCount": 6
+    },
+    {
+      "id": "academic_governance",
+      "name": "Blockchain-First Academic Governance",
+      "description": "Deterministic policy enforcement on Weil Chain with Icarus execution",
+      "stepCount": 5
+    }
+  ]
+}
+
+---------------------------------------------------
+✅ Workflow executed directly via API.
+---------------------------------------------------

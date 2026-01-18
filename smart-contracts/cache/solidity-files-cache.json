@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\vakit\\smart-autonomous-agent\\smart-contracts\\contracts\\WorkflowLog.sol": {
+      "lastModificationDate": 1768615367029,
+      "contentHash": "866fdebbc31217f5b202f0f8751653d5",
+      "sourceName": "contracts/WorkflowLog.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "WorkflowLog"
+      ]
+    }
+  }
+}

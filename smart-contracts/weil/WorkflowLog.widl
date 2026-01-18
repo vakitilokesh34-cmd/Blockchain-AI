@@ -1,0 +1,10 @@
+type ActionLog {
+    student_hash: string
+    action: string
+    timestamp: u64
+}
+
+interface WorkflowLog {
+    log_action(student_hash: string, action: string, execution_id: string, timestamp: u64): bool
+    get_logs(student_hash: string): [ActionLog]
+}

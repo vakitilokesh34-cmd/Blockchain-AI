@@ -1,11 +1,13 @@
-import "@nomicfoundation/hardhat-toolbox";
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
 
-/** @type import('hardhat/config').HardhatUserConfig */
-export default {
+module.exports = {
     solidity: "0.8.19",
     networks: {
-        localhost: {
-            url: "http://127.0.0.1:8545"
+        weilchain: {
+            url: process.env.WEILCHAIN_RPC,
+            accounts: [process.env.PRIVATE_KEY],
+            chainId: Number(process.env.WEILCHAIN_CHAIN_ID)
         }
     }
 };
